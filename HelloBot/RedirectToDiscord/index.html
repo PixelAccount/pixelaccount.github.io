@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to Discord</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        p {
+            color: blue;
+        }
+        a {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <p>Redirecting to <a href="https://discord.com/oauth2/authorize?client_id=1449256512806584340&scope=bot&permissions=8">Discord</a> — you can tap it to go to the page right away, or we'll do it automatically</p>
+    <p>Redirecting in <span id="timer">5</span> seconds...</p>
+
+    <script>
+        let seconds = 5;
+        const timerElement = document.getElementById('timer');
+
+        function countdown() {
+            timerElement.textContent = seconds;
+            if (seconds <= 0) {
+                window.location.href = 'https://discord.com/oauth2/authorize?client_id=1449256512806584340&scope=bot&permissions=8';
+                clearInterval(intervalId); // Stop the countdown
+            }
+            seconds--;
+        }
+
+        countdown(); // Call it once immediately
+        const intervalId = setInterval(countdown, 1000);
+    </script>
+</body>
+</html>
